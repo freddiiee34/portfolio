@@ -34,3 +34,10 @@ Puis ouvrir http://localhost:8000.
 ## Mettre à jour
 
 Modifier les fichiers de `site/`, vérifier en local, pousser : Coolify redéploie à chaque push si le déploiement automatique est activé, sinon cliquer sur **Redeploy**.
+
+## Formulaire de contact
+
+Le formulaire du bas de page envoie un JSON à `https://n8n.simondelrue.fr/webhook/portfolio-contact`.
+Le workflow n8n « Portfolio · Contact » (`n8n/portfolio-contact.json`, code dans `n8n/verifier_message.js`) vérifie le message
+(champ piège anti-robot, nom, email, longueur), puis l'envoie par Brevo à sdelruepro@gmail.com avec l'adresse du visiteur en « Répondre à ».
+Rien n'est conservé : les exécutions réussies ne sont pas enregistrées dans n8n.
