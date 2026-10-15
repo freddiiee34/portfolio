@@ -24,7 +24,7 @@
   --marge: clamp(20px, 4vw, 56px);
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0; background: var(--fond); color: var(--texte);
   font: 400 17px/1.6 var(--police);
@@ -54,28 +54,18 @@ p { margin: 0 0 14px; }
 /* --- Ouverture : le nom en très grand, la présentation à côté ------------------------- */
 .ouverture {
   min-height: calc(100svh - 64px); display: grid; grid-template-columns: 1.35fr 1fr;
-  grid-template-rows: 1fr auto; align-items: end; gap: 48px; padding-bottom: clamp(40px, 8vh, 96px);
+  align-content: end; align-items: end; gap: 48px; padding-bottom: clamp(40px, 8vh, 96px);
 }
 
-/* --- Le circuit : un inscrit traverse le CRM de Pacewell, en boucle ---------------------- */
-.circuit { grid-column: 1 / -1; align-self: center; padding-top: clamp(24px, 6vh, 64px); }
-.circuit-legende { color: var(--gris); font-size: 14px; margin: 0 0 22px; }
-.circuit-legende b { color: var(--accent); font-weight: 600; }
-.etapes { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); }
-.rail { position: absolute; top: 8px; left: 12.5%; right: 12.5%; height: 2px; background: var(--trait); border-radius: 99px; }
-.rail i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .9s cubic-bezier(.6, 0, .3, 1); }
-.etapes .etape { position: relative; text-align: center; padding: 0 8px; }
-.etapes .point {
-  display: block; width: 18px; height: 18px; margin: 0 auto 14px; border-radius: 50%;
-  background: var(--fond); border: 2px solid var(--trait); transition: background .3s, border-color .3s, box-shadow .3s;
+/* --- Le champ : grille de points animée derrière le nom (canvas, voir index.html) --------------- */
+.ouverture { position: relative; isolation: isolate; }
+.champ {
+  position: absolute; z-index: -1; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); height: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
 }
-.etapes b { display: block; font-size: 15px; font-weight: 600; color: var(--gris); transition: color .3s; }
-.etapes .detail { display: block; min-height: 2.8em; margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--accent); opacity: 0; transform: translateY(4px); transition: opacity .35s, transform .35s; }
-.etapes .etape.actif .point { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent); }
-.etapes .etape.actif b { color: var(--texte); }
-.etapes .etape.actif .detail { opacity: 1; transform: none; }
 .ouverture h1 {
-  margin: 0; font-weight: 750; letter-spacing: -0.045em; line-height: .86;
+  margin: 0; text-shadow: 0 0 40px var(--fond); font-weight: 750; letter-spacing: -0.045em; line-height: .86;
   font-size: clamp(64px, 12.5vw, 200px);
 }
 .presentation { max-width: 440px; padding-bottom: 10px; }
@@ -171,16 +161,22 @@ summary::after { color: var(--accent); }
 .formulaire label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
 .formulaire input, .formulaire textarea {
   width: 100%; font: 400 16px/1.5 var(--police); color: var(--sur-accent);
-  background: color-mix(in srgb, var(--sur-accent) 8%, transparent);
-  border: 1.5px solid color-mix(in srgb, var(--sur-accent) 30%, transparent); border-radius: 10px; padding: 12px 14px;
+  background: #f4f7ff; border: 2px solid transparent; border-radius: 10px; padding: 12px 14px;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--sur-accent) 25%, transparent);
+  transition: border-color .15s, box-shadow .15s;
 }
-.formulaire textarea { min-height: 140px; resize: vertical; }
-.formulaire input::placeholder, .formulaire textarea::placeholder { color: color-mix(in srgb, var(--sur-accent) 55%, var(--accent)); }
-.formulaire input:focus, .formulaire textarea:focus { outline: none; border-color: var(--sur-accent); }
+.formulaire textarea { min-height: 150px; resize: vertical; }
+.formulaire input::placeholder, .formulaire textarea::placeholder { color: #7a86a8; }
+.formulaire input:focus, .formulaire textarea:focus {
+  outline: none; border-color: var(--sur-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--sur-accent) 18%, transparent);
+}
 .formulaire button {
   justify-self: start; font: 700 16px var(--police); cursor: pointer; border: 0; border-radius: 999px;
-  padding: 14px 26px; background: var(--sur-accent); color: #fff;
+  padding: 15px 28px; background: var(--sur-accent); color: #fff; transition: transform .15s, background .15s;
 }
+.formulaire button:hover { background: #000; transform: translateY(-1px); }
+.formulaire button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .formulaire button:disabled { opacity: .6; cursor: progress; }
 .formulaire .piege { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .statut { min-height: 1.5em; margin: 0; font-weight: 600; }
@@ -208,12 +204,9 @@ footer a { color: var(--gris-clair); }
   .preuves, .memo, .competences { grid-template-columns: 1fr; gap: 18px; }
   .parcours li { grid-template-columns: 1fr; gap: 2px; }
   .ouverture h1 { font-size: clamp(58px, 19vw, 92px); }
+  .champ { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 48%); mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 48%); }
   .formulaire .deux-champs { grid-template-columns: 1fr; }
-  .etapes .etape { padding: 0 3px; }
-  .etapes b { font-size: 12.5px; }
-  .etapes .detail { font-size: 12px; min-height: 4.2em; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rail i, .etapes .point, .etapes .detail { transition: none; }
 }

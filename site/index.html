@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/logo.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/schibsted.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v=4">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Simon Delrue","jobTitle":"Développeur web & IA",
    "address":{"@type":"PostalAddress","addressLocality":"Wasquehal","addressCountry":"FR"},
@@ -45,16 +45,7 @@
 
   <main class="cadre">
     <section class="ouverture" aria-labelledby="nom">
-      <div class="circuit" role="img" aria-label="Animation : un inscrit traverse le CRM de Pacewell, de l'inscription à l'email écrit par l'IA">
-        <p class="circuit-legende"><b>Pacewell</b>, un de mes projets&nbsp;: chaque inscrit traverse ce circuit en quelques secondes.</p>
-        <div class="etapes" aria-hidden="true">
-          <div class="rail"><i></i></div>
-          <div class="etape"><span class="point"></span><b>Inscription</b><span class="detail"></span></div>
-          <div class="etape"><span class="point"></span><b>Qualification par l'IA</b><span class="detail"></span></div>
-          <div class="etape"><span class="point"></span><b>Fiche CRM</b><span class="detail"></span></div>
-          <div class="etape"><span class="point"></span><b>Email personnalisé</b><span class="detail"></span></div>
-        </div>
-      </div>
+      <canvas class="champ" aria-hidden="true"></canvas>
       <h1 id="nom">Simon<br>Delrue</h1>
       <div class="presentation">
         <div class="qui">
@@ -237,14 +228,13 @@
     </section>
 
     <section id="parcours" aria-labelledby="titre-parcours">
-      <div class="entete-section"><h2 id="titre-parcours">Parcours</h2><p>Formation scientifique, puis le web, puis l'IA.</p></div>
+      <div class="entete-section"><h2 id="titre-parcours">Parcours</h2><p>Le web, puis l'IA.</p></div>
       <div class="deux">
         <p class="grand">Cinq ans en agence, puis indépendant.</p>
         <ol class="parcours">
           <li><span class="quand">Depuis 2024</span><div><strong>Développeur web &amp; IA indépendant</strong><span class="detail">Sites, emailings et automatisations pour des PME, et des projets IA en ligne.</span></div></li>
           <li><span class="quand">2021 à 2026</span><div><strong>Développeur web en agence, Tourcoing</strong><span class="detail">Sites vitrines, landing pages, WordPress et campagnes emailing pour des marques nationales.</span></div></li>
           <li><span class="quand">2020 à 2021</span><div><strong>Bachelor Responsable de projet web et mobile</strong><span class="detail">EPITECH Lille</span></div></li>
-          <li><span class="quand">2018 à 2020</span><div><strong>Classe préparatoire scientifique</strong><span class="detail">ISEN Lille</span></div></li>
         </ol>
       </div>
     </section>
@@ -256,7 +246,7 @@
       <div class="entete-section"><h2 id="titre-contact">Contact</h2><p>Pour un poste, une mission ou une question sur un projet.</p></div>
       <div class="contact-corps">
         <div>
-          <h3>Parlons de votre projet ou de votre équipe.</h3>
+          <h3>Parlons de votre projet.</h3>
           <p>Écrivez-moi avec ce formulaire, ou directement à <a href="mailto:sdelruepro@gmail.com">sdelruepro@gmail.com</a>.</p>
           <p><a href="https://www.linkedin.com/in/simon-delrue/">Mon profil LinkedIn</a></p>
         </div>
@@ -298,42 +288,49 @@
   </script>
 
   <script>
-    // Le circuit de l'ouverture : trois inscrits types traversent les quatre étapes de Pacewell.
+    // Le champ de l'ouverture : une grille de points traversée par des ondes bleues, qui s'éclaire autour du curseur.
     (function () {
-      var profils = [
-        ["Trail, 5 sorties par semaine, vise un ultra", "Trail endurance, score 88/100", "Liste Trail endurance, alerte au commercial", "« Prêt pour tes prochains ultras ? »"],
-        ["Route, 1 à 2 sorties, objectif 10 km", "Route débuter, score 25/100", "Liste Route débuter", "« Bienvenue : on court ensemble ? »"],
-        ["Route et trail, prépare un semi", "Route performance, score 58/100", "Liste Route performance", "« Préparons ton prochain chrono »"]
-      ];
-      var etapes = document.querySelectorAll(".etapes .etape");
-      var flux = document.querySelector(".rail i");
-      if (!etapes.length || !flux) return;
+      var toile = document.querySelector(".champ");
+      if (!toile || !toile.getContext) return;
+      var ctx = toile.getContext("2d");
       var calme = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      function afficher(p, jusqua) {
-        etapes.forEach(function (li, i) {
-          li.querySelector(".detail").textContent = profils[p][i];
-          li.classList.toggle("actif", i <= jusqua);
-        });
-        flux.style.width = (jusqua <= 0 ? 0 : (jusqua / (etapes.length - 1)) * 100) + "%";
+      var pas = 22, l = 0, h = 0, dpr = 1, points = [], souris = { x: -999, y: -999, f: 0 }, visible = true, t0 = performance.now();
+      function dimensionner() {
+        var r = toile.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2); l = r.width; h = r.height;
+        toile.width = Math.round(l * dpr); toile.height = Math.round(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        pas = l < 600 ? 18 : 22; points = [];
+        for (var y = pas / 2; y < h; y += pas) for (var x = pas / 2; x < l; x += pas) points.push(x, y);
       }
-      if (calme) { afficher(0, etapes.length - 1); return; }
-      var p = 0, i = -1;
-      function suivant() {
-        i++;
-        if (i >= etapes.length) {
-          setTimeout(function () {
-            etapes.forEach(function (li) { li.classList.remove("actif"); });
-            flux.style.width = "0";
-            p = (p + 1) % profils.length; i = -1;
-            setTimeout(suivant, 900);
-          }, 2600);
-          return;
+      function dessiner(t) {
+        ctx.clearRect(0, 0, l, h);
+        var s = t / 1000;
+        for (var i = 0; i < points.length; i += 2) {
+          var x = points[i], y = points[i + 1];
+          // Deux ondes qui se croisent en diagonale, et une troisième plus lente qui respire.
+          var v = Math.sin(x * 0.012 + y * 0.006 - s * 1.1) + Math.sin(x * -0.004 + y * 0.014 + s * 0.8) + 0.6 * Math.sin((x + y) * 0.003 - s * 0.35);
+          v = Math.max(0, v - 0.7) / 1.9;
+          var dx = x - souris.x, dy = y - souris.y, d = Math.sqrt(dx * dx + dy * dy);
+          var lueur = souris.f * Math.max(0, 1 - d / 190);
+          var k = Math.min(1, v * v * 1.6 + lueur);
+          var r = 0.9 + k * 2.1;
+          ctx.fillStyle = k < 0.06 ? "rgba(141,144,150,0.22)" : "rgba(" + Math.round(77 + (1 - k) * 40) + "," + Math.round(124 + (1 - k) * 20) + ",255," + (0.25 + k * 0.75).toFixed(3) + ")";
+          ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
         }
-        if (i === 0) etapes.forEach(function (li, k) { li.querySelector(".detail").textContent = profils[p][k]; });
-        flux.style.width = (i / (etapes.length - 1)) * 100 + "%";
-        setTimeout(function () { etapes[i].classList.add("actif"); setTimeout(suivant, 1100); }, i === 0 ? 200 : 900);
       }
-      setTimeout(suivant, 600);
+      function boucle(t) {
+        if (visible) { souris.f += ((souris.x > -999 ? 1 : 0) - souris.f) * 0.08; dessiner(t - t0); }
+        requestAnimationFrame(boucle);
+      }
+      dimensionner();
+      window.addEventListener("resize", function () { dimensionner(); if (calme) dessiner(4000); });
+      if (calme) { dessiner(4000); return; }
+      var zone = toile.parentElement;
+      zone.addEventListener("pointermove", function (e) { var r = toile.getBoundingClientRect(); souris.x = e.clientX - r.left; souris.y = e.clientY - r.top; });
+      zone.addEventListener("pointerleave", function () { souris.x = souris.y = -999; });
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(toile);
+      requestAnimationFrame(boucle);
     })();
 
     // Formulaire de contact : envoyé au workflow n8n « Portfolio · Contact », qui me le transmet par email.
