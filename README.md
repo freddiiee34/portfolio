@@ -35,6 +35,10 @@ Puis ouvrir http://localhost:8000.
 
 Modifier les fichiers de `site/`, vérifier en local, pousser : Coolify redéploie à chaque push si le déploiement automatique est activé, sinon cliquer sur **Redeploy**.
 
+## Animation de l'ouverture
+
+Le fond bleu derrière le nom est un shader WebGL écrit à la main (bruit fractal déformé par lui-même, « domain warping »), dans le dernier script de `site/index.html`. Il ralentit l'image hors écran, se fige si le visiteur a demandé moins d'animations, et laisse un dégradé fixe si WebGL est indisponible.
+
 ## Formulaire de contact
 
 Le formulaire du bas de page envoie un JSON à `https://n8n.simondelrue.fr/webhook/portfolio-contact`.
