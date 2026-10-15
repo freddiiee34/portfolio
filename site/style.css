@@ -1,0 +1,178 @@
+/* Portfolio de Simon Delrue, version 2.
+   Noir et blanc, inspiré des portfolios de Sophie Brittain (nom en très grand,
+   présentation courte à côté) et de Steve Wolf (grandes images, grille asymétrique).
+   Aucune couleur d'accent : la hiérarchie vient de la taille et du gris. */
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("/fonts/schibsted.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+:root {
+  color-scheme: dark;
+  --fond: #111214;
+  --surface: #1a1b1e;
+  --trait: #2b2d31;
+  --texte: #f2f1ee;
+  --gris: #8d9096;
+  --gris-clair: #b9bbbf;
+  /* Couleur d'accent (une seule) et texte posé dessus */
+  --accent: #4d7cff;
+  --sur-accent: #0b1020;
+  --police: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --large: 1320px;
+  --marge: clamp(20px, 4vw, 56px);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--fond); color: var(--texte);
+  font: 400 17px/1.6 var(--police);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--texte); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--gris); }
+a:hover { text-decoration-color: var(--texte); }
+:focus-visible { outline: 2px solid var(--texte); outline-offset: 3px; border-radius: 2px; }
+p { margin: 0 0 14px; }
+
+.cadre { max-width: var(--large); margin: 0 auto; padding: 0 var(--marge); }
+
+/* --- En-tête ------------------------------------------------------------------ */
+.bandeau {
+  position: sticky; top: 0; z-index: 10; background: rgba(17, 18, 20, .86);
+  backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+.bandeau .cadre { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.marque { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 16px; }
+.marque svg { width: 26px; height: 26px; }
+.bandeau nav { display: flex; gap: clamp(18px, 3vw, 40px); font-size: 15px; }
+.bandeau nav a { text-decoration: none; color: var(--gris-clair); }
+.bandeau nav a:hover { color: var(--texte); }
+
+/* --- Ouverture : le nom en très grand, la présentation à côté ------------------------- */
+.ouverture {
+  min-height: calc(100svh - 64px); display: grid; grid-template-columns: 1.35fr 1fr;
+  align-items: end; gap: 48px; padding-bottom: clamp(40px, 8vh, 96px);
+}
+.ouverture h1 {
+  margin: 0; font-weight: 750; letter-spacing: -0.045em; line-height: .86;
+  font-size: clamp(64px, 12.5vw, 200px);
+}
+.presentation { max-width: 440px; padding-bottom: 10px; }
+.presentation .qui { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.presentation img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.presentation .role { font-weight: 650; font-size: 17px; margin: 0; }
+.presentation .lieu { color: var(--gris); font-size: 15px; margin: 0; }
+.presentation p { color: var(--gris-clair); }
+.presentation .dispo { color: var(--texte); margin-top: 20px; }
+.presentation .dispo::before {
+  content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); margin-right: 9px; vertical-align: 1px;
+}
+
+/* --- Titres de section : une ligne fine, le titre à gauche --------------------------------- */
+section { padding-top: clamp(80px, 12vh, 140px); }
+.entete-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-top: 1px solid var(--trait); padding-top: 22px; margin-bottom: 48px; }
+.entete-section h2 { margin: 0; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--texte); }
+.entete-section p { margin: 0; color: var(--gris); font-size: 15px; max-width: 460px; }
+
+/* --- Projet phare : grande image puis note de travail en deux colonnes ------------------------- */
+.projet { margin-bottom: clamp(96px, 14vh, 160px); }
+.image { margin: 0 0 32px; border-radius: 6px; overflow: hidden; background: var(--surface); }
+.image img { width: 100%; }
+.projet-corps { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; }
+.projet h3 { font-size: clamp(30px, 3.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 750; margin: 0 0 12px; }
+.genre { color: var(--gris); font-size: 15px; margin: 0; }
+.resume { font-size: clamp(19px, 1.7vw, 22px); line-height: 1.45; color: var(--texte); margin-bottom: 28px; }
+
+.preuves { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0 0 28px; }
+.preuves > div { border-top: 1px solid var(--trait); padding-top: 14px; }
+.preuves b { display: block; font-size: clamp(28px, 3vw, 40px); font-weight: 750; letter-spacing: -0.02em; line-height: 1.05; }
+.preuves span { display: block; font-size: 14px; color: var(--gris); margin-top: 6px; line-height: 1.4; }
+.jauge { height: 6px; border-radius: 99px; background: var(--trait); margin-top: 12px; overflow: hidden; }
+.jauge i { display: block; height: 100%; border-radius: 99px; background: var(--accent); }
+.direct { font-size: 14px; color: var(--gris); margin: -12px 0 24px; min-height: 1.4em; }
+
+details { border-top: 1px solid var(--trait); border-bottom: 1px solid var(--trait); margin: 0 0 24px; }
+summary { cursor: pointer; padding: 16px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-weight: 400; color: var(--gris); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "\2212"; }
+summary::after { color: var(--accent); }
+.memo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 36px; padding: 4px 0 26px; }
+.memo h4 { font-size: 15px; font-weight: 650; margin: 0 0 6px; }
+.memo p, .memo li { color: var(--gris-clair); font-size: 16px; }
+.memo ul { margin: 0; padding-left: 18px; }
+.memo li { margin-bottom: 6px; }
+.memo li::marker { color: var(--gris); }
+.outils { color: var(--gris); font-size: 15px; margin: 0 0 14px; }
+.liens { display: flex; flex-wrap: wrap; gap: 8px 28px; font-weight: 600; margin: 0; }
+
+/* --- Agence : grille asymétrique d'images ---------------------------------------------- */
+.grille { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px 24px; }
+.grille figure { margin: 0; }
+.grille .g7 { grid-column: span 7; }
+.grille .g5 { grid-column: span 5; align-self: end; }
+.grille .g12 { grid-column: 3 / span 8; }
+.grille figcaption { margin-top: 14px; }
+.grille figcaption strong { display: block; font-weight: 650; font-size: 17px; }
+.grille figcaption span { display: block; color: var(--gris); font-size: 15px; }
+.grille figcaption p { color: var(--gris-clair); font-size: 15px; margin: 6px 0 0; max-width: 520px; }
+
+/* --- Méthode, compétences, parcours : titre à gauche, contenu à droite ------------------------- */
+.deux { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.deux .grand { font-size: clamp(30px, 3.6vw, 52px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 750; margin: 0; max-width: 9em; }
+.methode { list-style: none; counter-reset: etape; margin: 0; padding: 0; }
+.methode li { counter-increment: etape; display: grid; grid-template-columns: 44px 1fr; padding: 18px 0; border-top: 1px solid var(--trait); }
+.methode li:first-child { border-top: 0; padding-top: 0; }
+.methode li::before { content: counter(etape, decimal-leading-zero); color: var(--accent); font-size: 15px; padding-top: 3px; font-variant-numeric: tabular-nums; }
+.methode strong { display: block; font-size: 19px; font-weight: 650; margin-bottom: 2px; }
+.methode span { color: var(--gris-clair); }
+.competences { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 36px; }
+.competences h4 { font-size: 15px; font-weight: 650; margin: 0 0 6px; }
+.competences p { color: var(--gris-clair); font-size: 16px; margin: 0; }
+.parcours { list-style: none; margin: 0; padding: 0; }
+.parcours li { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--trait); }
+.parcours li:first-child { border-top: 0; padding-top: 0; }
+.parcours .quand { color: var(--gris); font-size: 15px; font-variant-numeric: tabular-nums; }
+.parcours strong { display: block; font-weight: 650; }
+.parcours span.detail { color: var(--gris-clair); font-size: 16px; }
+
+/* --- Contact : un grand bloc de couleur, l'adresse en très grand ----------------------- */
+.contact { background: var(--accent); color: var(--sur-accent); margin-top: clamp(80px, 12vh, 140px); padding: clamp(56px, 9vh, 104px) 0 clamp(48px, 8vh, 88px); }
+.contact .entete-section { border-top-color: color-mix(in srgb, var(--sur-accent) 25%, transparent); }
+.contact .entete-section h2 { color: var(--sur-accent); }
+.contact .entete-section p, .contact p { color: color-mix(in srgb, var(--sur-accent) 78%, var(--accent)); }
+.contact a { color: var(--sur-accent); text-decoration-color: currentColor; }
+.contact .email {
+  display: inline-block; font-size: clamp(30px, 6.6vw, 104px); font-weight: 750; letter-spacing: -0.04em;
+  line-height: 1; text-decoration: none; margin: 8px 0 28px; word-break: break-word;
+}
+.contact .email:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 10px; }
+.contact :focus-visible { outline-color: var(--sur-accent); }
+
+footer { border-top: 1px solid var(--trait); }
+footer .cadre { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 22px; padding-bottom: 28px; font-size: 14px; color: var(--gris); }
+footer a { color: var(--gris-clair); }
+
+/* --- Pages secondaires (mentions légales) ------------------------------------------------ */
+.texte { max-width: 680px; padding: 64px 0 0; }
+.texte h1 { font-size: clamp(40px, 6vw, 72px); letter-spacing: -0.035em; line-height: 1; margin: 0 0 24px; }
+.texte h2 { font-size: 19px; margin: 36px 0 8px; }
+.texte p { color: var(--gris-clair); }
+
+@media (max-width: 860px) {
+  .ouverture { grid-template-columns: 1fr; align-content: end; gap: 28px; min-height: calc(92svh - 64px); }
+  .projet-corps, .deux, .entete-section { grid-template-columns: 1fr; gap: 20px; }
+  .grille { grid-template-columns: 1fr; gap: 40px; }
+  .grille .g7, .grille .g5, .grille .g12 { grid-column: auto; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .bandeau nav .facultatif { display: none; }
+  .preuves, .memo, .competences { grid-template-columns: 1fr; gap: 18px; }
+  .parcours li { grid-template-columns: 1fr; gap: 2px; }
+  .ouverture h1 { font-size: clamp(58px, 19vw, 92px); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

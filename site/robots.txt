@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://simondelrue.fr/sitemap.xml

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simon Delrue, développeur web & IA à Lille</title>
+  <meta name="description" content="Je construis des outils et des automatisations qui utilisent l'IA pour régler des problèmes concrets d'entreprise. Projets en ligne : un CRM piloté par l'IA, un audit de site automatique.">
+  <link rel="canonical" href="https://simondelrue.fr/">
+  <meta name="theme-color" content="#111214">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Simon Delrue, développeur web & IA">
+  <meta property="og:description" content="Des outils et des automatisations IA qui règlent des problèmes concrets d'entreprise. Projets en ligne, code public, résultats mesurés.">
+  <meta property="og:url" content="https://simondelrue.fr/">
+  <meta property="og:image" content="https://simondelrue.fr/img/apercu.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/schibsted.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Simon Delrue","jobTitle":"Développeur web & IA",
+   "address":{"@type":"PostalAddress","addressLocality":"Wasquehal","addressCountry":"FR"},
+   "url":"https://simondelrue.fr/","sameAs":["https://www.linkedin.com/in/simon-delrue/","https://github.com/freddiiee34"]}
+  </script>
+</head>
+<body>
+  <header class="bandeau">
+    <div class="cadre">
+      <a class="marque" href="/" aria-label="Simon Delrue, accueil">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="17" fill="none" stroke="#3a3c41" stroke-width="6"/>
+          <path d="M32 15 A17 17 0 1 1 15.8 37.3" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="5" fill="#f2f1ee"/>
+        </svg>
+        Simon Delrue
+      </a>
+      <nav aria-label="Sections">
+        <a href="#projets">Projets</a>
+        <a class="facultatif" href="#parcours">Parcours</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cadre">
+    <section class="ouverture" aria-labelledby="nom">
+      <h1 id="nom">Simon<br>Delrue</h1>
+      <div class="presentation">
+        <div class="qui">
+          <img src="/img/simon.webp" alt="Portrait de Simon Delrue" width="56" height="56">
+          <div>
+            <p class="role">Développeur web &amp; IA</p>
+            <p class="lieu">Métropole lilloise</p>
+          </div>
+        </div>
+        <p>Je construis des outils et des automatisations qui utilisent l'IA pour régler des problèmes concrets d'entreprise&nbsp;: qualifier des prospects, écrire des emails personnalisés, analyser un site.</p>
+        <p>Cinq ans de sites et d'emailings en agence, aujourd'hui indépendant.</p>
+        <p class="dispo">Disponible pour un poste ou une mission, à Lille, Paris ou à distance. <a href="mailto:simon59117@gmail.com">M'écrire</a> ou <a href="https://www.linkedin.com/in/simon-delrue/">LinkedIn</a>.</p>
+      </div>
+    </section>
+
+    <section id="projets" aria-labelledby="titre-projets">
+      <div class="entete-section">
+        <h2 id="titre-projets">Projets</h2>
+        <p>Deux projets en ligne, que vous pouvez tester vous-même, puis trois réalisations faites en agence.</p>
+      </div>
+
+      <article class="projet" aria-labelledby="pacewell">
+        <figure class="image">
+          <img src="/img/pacewell.webp" alt="Page d'inscription de Pacewell : un dossard de course à remplir, avec le profil d'un parcours en arrière-plan" width="1600" height="1000" loading="lazy">
+        </figure>
+        <div class="projet-corps">
+          <div>
+            <h3 id="pacewell">Pacewell</h3>
+            <p class="genre">Projet personnel, automatisation CRM et IA</p>
+          </div>
+          <div>
+            <p class="resume">Un CRM qui qualifie, accueille et relance chaque inscrit avec l'IA, pour une marque de running fictive. Bâti sur des outils qu'une PME peut s'offrir&nbsp;: n8n, Brevo et l'API Claude.</p>
+            <div class="preuves">
+              <div><b>30/30</b><span>profils de test classés dans le bon segment</span><div class="jauge" aria-hidden="true"><i style="width:100%"></i></div></div>
+              <div><b>29/30</b><span>avec la bonne température (froid, tiède, chaud)</span><div class="jauge" aria-hidden="true"><i style="width:96.7%"></i></div></div>
+              <div><b id="cout-1000">0,17&nbsp;$</b><span>de frais d'IA pour 1&nbsp;000 inscrits qualifiés</span></div>
+            </div>
+            <p class="direct" id="direct-pacewell" aria-live="polite"></p>
+            <details>
+              <summary>Lire l'étude de cas</summary>
+              <div class="memo">
+          <div>
+            <h4>Le problème</h4>
+            <p>Une marque reçoit des inscrits à sa newsletter sans savoir qui débute, qui prépare un ultra-trail, ni qui est prêt à acheter. Tout le monde reçoit les mêmes emails, et les meilleurs prospects passent inaperçus.</p>
+          </div>
+          <div>
+            <h4>Ce que j'ai construit</h4>
+            <ul>
+              <li>La qualification de chaque inscrit par l'IA&nbsp;: segment, niveau, score sur 100 et raison</li>
+              <li>Un email de bienvenue écrit pour chaque profil, vérifié avant envoi</li>
+              <li>Une alerte au commercial dès qu'un score dépasse 70</li>
+              <li>Des relances d'inactifs proposées par l'IA, envoyées seulement après validation humaine</li>
+              <li>Un tableau de bord public, sans aucune donnée personnelle</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Les garde-fous</h4>
+            <ul>
+              <li>Chaque réponse de l'IA est vérifiée&nbsp;; au moindre doute, le lead part en «&nbsp;À qualifier&nbsp;» au lieu d'être perdu</li>
+              <li>Aucun prix, promotion, lien ni emoji ne peut partir au nom de la marque</li>
+              <li>L'IA ne reçoit jamais le nom ni l'email des inscrits</li>
+              <li>Liens de validation à usage unique</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Ce qui a coincé</h4>
+            <p>La mise en ligne a révélé onze problèmes réels&nbsp;: une adresse rejetée par Gmail, des alertes retardées d'une heure, un modèle qui épuisait son budget avant de répondre, une limite de requêtes de l'API. Chacun est documenté avec sa cause et sa correction.</p>
+          </div>
+        </div>
+            </details>
+            <p class="outils">n8n, Brevo, API Claude, JavaScript, Python, Docker, Coolify sur un VPS OVH</p>
+            <p class="liens">
+              <a href="https://pacewell.simondelrue.fr">Tester l'inscription</a>
+              <a href="https://pacewell.simondelrue.fr/tableau-de-bord">Tableau de bord en direct</a>
+              <a href="https://github.com/freddiiee34/pacewell-crm">Code et documentation</a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="projet" aria-labelledby="audit">
+        <figure class="image">
+          <img src="/img/audit.webp" alt="Page d'accueil de l'audit : « Votre site vous fait-il perdre des clients ? » avec un champ pour entrer l'adresse de son site" width="1600" height="1000" loading="lazy">
+        </figure>
+        <div class="projet-corps">
+          <div>
+            <h3 id="audit">Audit de site</h3>
+            <p class="genre">Projet personnel, outil web et IA</p>
+          </div>
+          <div>
+            <p class="resume">Un gérant de PME entre l'adresse de son site et obtient en une minute un score, puis les cinq corrections qui auront le plus d'effet, expliquées sans jargon par l'IA.</p>
+            <div class="preuves">
+              <div><b>20</b><span>contrôles environ, de la vitesse aux mentions légales</span></div>
+              <div><b>1&nbsp;min</b><span>pour obtenir son score, sans laisser son email</span></div>
+              <div><b>56</b><span>tests automatiques sur l'analyse et les emails</span></div>
+            </div>
+            <details>
+              <summary>Lire l'étude de cas</summary>
+              <div class="memo">
+          <div>
+            <h4>Le problème</h4>
+            <p>Un site lent, mal lu par Google ou illisible sur téléphone fait fuir des clients sans que le gérant s'en rende compte. Les outils existants parlent aux développeurs, pas aux gérants.</p>
+          </div>
+          <div>
+            <h4>Ce que j'ai construit</h4>
+            <ul>
+              <li>Une analyse de la page d'accueil, faite comme la feraient Google et un visiteur</li>
+              <li>Un rapport rédigé par l'IA en mots simples, avec cinq priorités classées</li>
+              <li>Le score tout de suite, le rapport complet par email si le visiteur le souhaite</li>
+              <li>Une demande de rendez-vous qui m'alerte quand un prospect veut de l'aide</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Les garde-fous</h4>
+            <ul>
+              <li>L'outil lit le site sans jamais rien modifier</li>
+              <li>Limites d'usage par adresse et par email, piège contre les robots</li>
+              <li>Email utilisé uniquement pour le rapport, mentions légales et confidentialité en place</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Pourquoi cet outil</h4>
+            <p>Il ouvre la conversation avec un gérant&nbsp;: l'audit montre le problème en une minute, et l'offre de correction vient ensuite, quand il la demande.</p>
+          </div>
+        </div>
+            </details>
+            <p class="outils">Python, FastAPI, API Claude, Brevo, SQLite, Docker</p>
+            <p class="liens">
+              <a href="https://audit.simondelrue.fr">Analyser un site</a>
+              <a href="https://github.com/freddiiee34/audit-site">Code et documentation</a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <div class="entete-section">
+        <h2>Réalisé en agence</h2>
+        <p>Cinq ans de sites, de landing pages et d'emailings pour des marques nationales, intégrés à partir des maquettes des graphistes.</p>
+      </div>
+      <div class="grille">
+        <figure class="g7">
+          <div class="image"><img src="/img/galerie-ia.webp" alt="Galerie InnoDays 2023 de TotalEnergies, images générées par IA" width="1200" height="750" loading="lazy"></div>
+          <figcaption><strong>Galerie InnoDays 2023</strong><span>TotalEnergies, landing page</span><p>La galerie d'un concours d'images générées par IA&nbsp;: une trentaine de visuels en mosaïque, qui s'ouvrent en grand, podium mis en avant.</p></figcaption>
+        </figure>
+        <figure class="g5">
+          <div class="image"><img src="/img/happy-hours.webp" alt="Landing page Happy Hours de Parions Sport en ligne" width="1200" height="750" loading="lazy"></div>
+          <figcaption><strong>Happy Hours</strong><span>Parions Sport en ligne (FDJ), landing page</span><p>Un sélecteur de boost animé que l'on fait glisser au doigt, et les mentions obligatoires des jeux d'argent.</p></figcaption>
+        </figure>
+        <figure class="g12">
+          <div class="image"><img src="/img/emailing-sante.webp" alt="Emailing Audiens sur la complémentaire santé des intermittents" width="1200" height="750" loading="lazy"></div>
+          <figcaption><strong>Complémentaire santé des intermittents</strong><span>Audiens, emailing</span><p>Codé à la main en tableaux et styles en ligne, lisible dans toutes les messageries, Outlook compris, et adapté au mobile.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="titre-methode">
+      <div class="entete-section"><h2 id="titre-methode">Méthode</h2><p>La même démarche pour un outil interne, une automatisation ou une campagne.</p></div>
+      <div class="deux">
+        <p class="grand">Partir du problème, pas de l'outil.</p>
+        <ol class="methode">
+          <li><div><strong>Partir du problème</strong><span>Qui perd du temps, sur quelle tâche, combien de fois par semaine. L'IA vient après, si elle est utile.</span></div></li>
+          <li><div><strong>Tester sur des cas réels avant de construire</strong><span>Un jeu de cas annotés à la main, comme les 30 profils de Pacewell, dit si la solution marche vraiment.</span></div></li>
+          <li><div><strong>Prévoir l'échec</strong><span>Réponse vérifiée, solution de repli, et validation humaine dès qu'une erreur coûterait cher.</span></div></li>
+          <li><div><strong>Mesurer et documenter</strong><span>Coût par traitement, taux d'erreur, et une documentation que l'équipe peut reprendre sans moi.</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section aria-labelledby="titre-competences">
+      <div class="entete-section"><h2 id="titre-competences">Compétences</h2><p>Du site à l'automatisation, en passant par l'emailing.</p></div>
+      <div class="deux">
+        <p class="grand">Web, emailing, IA.</p>
+        <div class="competences">
+          <div><h4>IA et automatisation</h4><p>Workflows n8n, intégration de l'API Claude avec réponses vérifiées, évaluation sur cas annotés, scripts Python, développement assisté avec Claude Code et Cursor.</p></div>
+          <div><h4>Emailing et CRM</h4><p>Emailings responsive codés à la main ou dans les éditeurs (Brevo, Mailjet, Actito, HubSpot, Stripo), emails transactionnels, segmentation, personnalisation, campagnes email et SMS.</p></div>
+          <div><h4>Web</h4><p>Sites vitrines et landing pages sur mesure (HTML, SCSS, JavaScript, PHP et MySQL, API REST), sites WordPress (Elementor Pro, Polylang, WP Rocket, Yoast).</p></div>
+          <div><h4>Projet et mise en ligne</h4><p>Recueil du besoin, cahier des charges, recette et suivi client, maquettes Figma, hébergement avec Docker et Coolify. Anglais courant (C1).</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours" aria-labelledby="titre-parcours">
+      <div class="entete-section"><h2 id="titre-parcours">Parcours</h2><p>Formation scientifique, puis le web, puis l'IA.</p></div>
+      <div class="deux">
+        <p class="grand">Cinq ans en agence, puis indépendant.</p>
+        <ol class="parcours">
+          <li><span class="quand">Depuis 2024</span><div><strong>Développeur web &amp; IA indépendant</strong><span class="detail">Sites, emailings et automatisations pour des PME, et des projets IA en ligne.</span></div></li>
+          <li><span class="quand">2021 à 2026</span><div><strong>Développeur web en agence, Tourcoing</strong><span class="detail">Sites vitrines, landing pages, WordPress et campagnes emailing pour des marques nationales.</span></div></li>
+          <li><span class="quand">2020 à 2021</span><div><strong>Bachelor Responsable de projet web et mobile</strong><span class="detail">EPITECH Lille</span></div></li>
+          <li><span class="quand">2018 à 2020</span><div><strong>Classe préparatoire scientifique</strong><span class="detail">ISEN Lille</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+    <section id="contact" class="contact" aria-labelledby="titre-contact">
+    <div class="cadre">
+    <div class="entete-section"><h2 id="titre-contact">Contact</h2><p>Pour un poste, une mission ou une question sur un projet.</p></div>
+    <a class="email" href="mailto:simon59117@gmail.com">simon59117@gmail.com</a>
+    <p><a href="https://www.linkedin.com/in/simon-delrue/">Profil LinkedIn</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="cadre">
+      <span>Simon Delrue, développeur web &amp; IA, Wasquehal</span>
+      <span><a href="/mentions-legales">Mentions légales</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Chiffres en direct de Pacewell, lus par le workflow n8n « Statistiques ».
+    // Sans réponse, les chiffres écrits dans la page restent affichés.
+    fetch("https://n8n.simondelrue.fr/webhook/pacewell-stats")
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (s) {
+        if (!s || !s.inscrits) return;
+        var n = new Intl.NumberFormat("fr-FR");
+        var cout = s.ia && s.ia.coutMoyenUsd ? s.ia.coutMoyenUsd * 1000 : 0;
+        if (cout) document.getElementById("cout-1000").textContent = cout.toLocaleString("fr-FR", { maximumFractionDigits: 2 }) + " $";
+        document.getElementById("direct-pacewell").textContent =
+          "En direct : " + n.format(s.inscrits) + " inscrits qualifiés, dont " + n.format(s.leadsChauds) + " leads chauds.";
+      })
+      .catch(function () {});
+  </script>
+</body>
+</html>
