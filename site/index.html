@@ -64,7 +64,7 @@
     <section id="projets" aria-labelledby="titre-projets">
       <div class="entete-section">
         <h2 id="titre-projets">Projets</h2>
-        <p>Deux projets en ligne, que vous pouvez tester vous-même, puis trois réalisations faites en agence.</p>
+        <p>Deux projets en ligne, que vous pouvez tester vous-même, puis une sélection d'emails et de landing pages réalisés en agence.</p>
       </div>
 
       <article class="projet" aria-labelledby="pacewell">
@@ -185,20 +185,115 @@
         <h2>Réalisé en agence</h2>
         <p>Cinq ans de sites, de landing pages et d'emailings pour des marques nationales, intégrés à partir des maquettes des graphistes.</p>
       </div>
-      <div class="grille">
-        <figure class="g7">
-          <div class="image"><img src="/img/galerie-ia.webp" alt="Galerie InnoDays 2023 de TotalEnergies, images générées par IA" width="1200" height="750" loading="lazy"></div>
-          <figcaption><strong>Galerie InnoDays 2023</strong><span>TotalEnergies, landing page</span><p>La galerie d'un concours d'images générées par IA&nbsp;: une trentaine de visuels en mosaïque, qui s'ouvrent en grand, podium mis en avant.</p></figcaption>
-        </figure>
-        <figure class="g5">
-          <div class="image"><img src="/img/happy-hours.webp" alt="Landing page Happy Hours de Parions Sport en ligne" width="1200" height="750" loading="lazy"></div>
-          <figcaption><strong>Happy Hours</strong><span>Parions Sport en ligne (FDJ), landing page</span><p>Un sélecteur de boost animé que l'on fait glisser au doigt, et les mentions obligatoires des jeux d'argent.</p></figcaption>
-        </figure>
-        <figure class="g12">
-          <div class="image"><img src="/img/emailing-sante.webp" alt="Emailing Audiens sur la complémentaire santé des intermittents" width="1200" height="750" loading="lazy"></div>
-          <figcaption><strong>Complémentaire santé des intermittents</strong><span>Audiens, emailing</span><p>Codé à la main en tableaux et styles en ligne, lisible dans toutes les messageries, Outlook compris, et adapté au mobile.</p></figcaption>
-        </figure>
+      <div class="realisations">
+        <div class="onglets" role="tablist" aria-label="Type de réalisation">
+          <button type="button" role="tab" id="onglet-emails" aria-controls="panneau-emails" aria-selected="true">Emails <span>4</span></button>
+          <button type="button" role="tab" id="onglet-lp" aria-controls="panneau-lp" aria-selected="false" tabindex="-1">Landing pages <span>5</span></button>
+        </div>
+        <div class="carrousel email" id="panneau-emails" role="tabpanel" aria-labelledby="onglet-emails">
+          <ul class="piste" aria-label="Emails réalisés en agence">
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/combi-booste.webp" data-titre="Combi Boosté, Parions Sport en ligne (FDJ)" aria-label="Voir l'email « Combi Boosté » en entier">
+                <img src="/img/agence/combi-booste-vignette.webp" alt="Email « Combi Boosté » pour Parions Sport en ligne (FDJ)" width="480" height="640" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Combi Boosté</h3>
+              <p class="client">Parions Sport en ligne (FDJ)</p>
+              <p>Un barème de bonus en tableau, des étapes numérotées et les mentions des jeux d'argent, tenus aussi bien dans Outlook que sur mobile.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/retraite-combattant.webp" data-titre="Retraite Mutualiste du Combattant, La France Mutualiste" aria-label="Voir l'email « Retraite Mutualiste du Combattant » en entier">
+                <img src="/img/agence/retraite-combattant-vignette.webp" alt="Email « Retraite Mutualiste du Combattant » pour La France Mutualiste" width="480" height="640" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Retraite Mutualiste du Combattant</h3>
+              <p class="client">La France Mutualiste</p>
+              <p>Champs personnalisés, avantages sur deux colonnes qui passent en une sur mobile, et mentions légales complètes.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/flex-resolutions.webp" data-titre="Trois résolutions pour 2023, Flex" aria-label="Voir l'email « Trois résolutions pour 2023 » en entier">
+                <img src="/img/agence/flex-resolutions-vignette.webp" alt="Email « Trois résolutions pour 2023 » pour Flex" width="480" height="640" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Trois résolutions pour 2023</h3>
+              <p class="client">Flex</p>
+              <p>Trois offres, chacune avec son appel à l'action vers un rappel commercial, et les variables du routeur pour la version en ligne.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/audiens-intermittents.webp" data-titre="Complémentaire santé des intermittents, Audiens" aria-label="Voir l'email « Complémentaire santé des intermittents » en entier">
+                <img src="/img/agence/audiens-intermittents-vignette.webp" alt="Email « Complémentaire santé des intermittents » pour Audiens" width="480" height="640" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Complémentaire santé des intermittents</h3>
+              <p class="client">Audiens</p>
+              <p>Codé à la main en tableaux et styles en ligne, lisible dans toutes les messageries, Outlook compris, et adapté au mobile.</p>
+            </li>
+          </ul>
+          <div class="commandes">
+            <button type="button" class="prec" aria-label="Projets précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button type="button" class="suiv" aria-label="Projets suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="progression" aria-hidden="true"><i></i></div>
+          </div>
+        </div>
+        <div class="carrousel lp" id="panneau-lp" role="tabpanel" aria-labelledby="onglet-lp" hidden>
+          <ul class="piste" aria-label="Landing pages réalisées en agence">
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/golden-janvier.webp" data-titre="Golden Janvier, Parions Sport en ligne (FDJ)" aria-label="Voir la page « Golden Janvier » en entier">
+                <img src="/img/agence/golden-janvier-vignette.webp" alt="Landing page « Golden Janvier » pour Parions Sport en ligne (FDJ)" width="1120" height="700" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Golden Janvier</h3>
+              <p class="client">Parions Sport en ligne (FDJ)</p>
+              <p>Trois cagnottes hebdomadaires avec une jauge calculée en JavaScript, des carrousels par semaine et par sport, et le parcours de participation.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/hub-euro-2024.webp" data-titre="Hub Euro 2024, Parions Sport en ligne (FDJ)" aria-label="Voir la page « Hub Euro 2024 » en entier">
+                <img src="/img/agence/hub-euro-2024-vignette.webp" alt="Landing page « Hub Euro 2024 » pour Parions Sport en ligne (FDJ)" width="1120" height="700" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Hub Euro 2024</h3>
+              <p class="client">Parions Sport en ligne (FDJ)</p>
+              <p>Quatre gabarits (accueil, rubrique, sous-rubrique, article) écrits en LESS, avec accordéons et mode sombre automatique. Ici l'accueil, avant l'arrivée des contenus.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/jeu-responsable.webp" data-titre="Pour que le jeu reste un plaisir, Parions Sport en ligne (FDJ)" aria-label="Voir la page « Pour que le jeu reste un plaisir » en entier">
+                <img src="/img/agence/jeu-responsable-vignette.webp" alt="Landing page « Pour que le jeu reste un plaisir » pour Parions Sport en ligne (FDJ)" width="1120" height="700" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Pour que le jeu reste un plaisir</h3>
+              <p class="client">Parions Sport en ligne (FDJ)</p>
+              <p>Une longue page éditoriale sur le jeu responsable&nbsp;: navigation par ancres, carrousel, vidéo et fenêtre d'information.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/happy-hours.webp" data-titre="Happy Hours, Parions Sport en ligne (FDJ)" aria-label="Voir la page « Happy Hours » en entier">
+                <img src="/img/agence/happy-hours-vignette.webp" alt="Landing page « Happy Hours » pour Parions Sport en ligne (FDJ)" width="1120" height="700" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Happy Hours</h3>
+              <p class="client">Parions Sport en ligne (FDJ)</p>
+              <p>Un sélecteur de boost animé que l'on fait glisser au doigt, et les mentions obligatoires des jeux d'argent.</p>
+            </li>
+            <li class="carte">
+              <button type="button" class="vue" data-complet="/img/agence/galerie-innodays.webp" data-titre="Galerie InnoDays 2023, TotalEnergies" aria-label="Voir la page « Galerie InnoDays 2023 » en entier">
+                <img src="/img/agence/galerie-innodays-vignette.webp" alt="Landing page « Galerie InnoDays 2023 » pour TotalEnergies" width="1120" height="700" loading="lazy" draggable="false">
+                <span class="voir">Voir en entier</span>
+              </button>
+              <h3>Galerie InnoDays 2023</h3>
+              <p class="client">TotalEnergies</p>
+              <p>La galerie d'un concours d'images générées par IA&nbsp;: une trentaine de visuels en mosaïque, qui s'ouvrent en grand, podium mis en avant.</p>
+            </li>
+          </ul>
+          <div class="commandes">
+            <button type="button" class="prec" aria-label="Projets précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button type="button" class="suiv" aria-label="Projets suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="progression" aria-hidden="true"><i></i></div>
+          </div>
+        </div>
       </div>
+      <dialog class="visionneuse" aria-labelledby="visionneuse-titre">
+        <div class="visionneuse-barre"><p id="visionneuse-titre"></p><button type="button" class="fermer">Fermer</button></div>
+        <div class="visionneuse-corps"><img alt=""></div>
+      </dialog>
     </section>
 
     <section aria-labelledby="titre-methode">
@@ -288,6 +383,114 @@
   </script>
 
   <script>
+    // Réalisations en agence : deux onglets, deux carrousels (défilement par glisser, flèches, jauge),
+    // aperçu qui défile au survol et visionneuse plein écran.
+    (function () {
+      var onglets = [].slice.call(document.querySelectorAll('.onglets [role="tab"]'));
+      function choisir(o, focus) {
+        onglets.forEach(function (x) {
+          var actif = x === o;
+          x.setAttribute("aria-selected", actif); x.tabIndex = actif ? 0 : -1;
+          document.getElementById(x.getAttribute("aria-controls")).hidden = !actif;
+        });
+        if (focus) o.focus();
+        majTout();
+      }
+      onglets.forEach(function (o, i) {
+        o.addEventListener("click", function () { choisir(o); });
+        o.addEventListener("keydown", function (e) {
+          var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+          if (d) { e.preventDefault(); choisir(onglets[(i + d + onglets.length) % onglets.length], true); }
+        });
+      });
+
+      var calme = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var carrousels = [].slice.call(document.querySelectorAll(".carrousel"));
+      var majs = [];
+      function majTout() { majs.forEach(function (f) { f(); }); }
+      carrousels.forEach(function (c) {
+        var piste = c.querySelector(".piste"), jauge = c.querySelector(".progression i");
+        var prec = c.querySelector(".prec"), suiv = c.querySelector(".suiv");
+        function maj() {
+          var max = piste.scrollWidth - piste.clientWidth;
+          var part = piste.scrollWidth ? piste.clientWidth / piste.scrollWidth : 1;
+          jauge.style.width = (part * 100) + "%";
+          jauge.style.transform = "translateX(" + (max > 0 ? (piste.scrollLeft / max) * (1 / part - 1) * 100 : 0) + "%)";
+          prec.disabled = piste.scrollLeft < 4; suiv.disabled = piste.scrollLeft > max - 4;
+        }
+        majs.push(maj);
+        function pas() { var carte = piste.querySelector(".carte"); return carte ? carte.getBoundingClientRect().width + 24 : 300; }
+        prec.addEventListener("click", function () { piste.scrollBy({ left: -pas(), behavior: calme ? "auto" : "smooth" }); });
+        suiv.addEventListener("click", function () { piste.scrollBy({ left: pas(), behavior: calme ? "auto" : "smooth" }); });
+        piste.addEventListener("scroll", maj, { passive: true });
+        window.addEventListener("resize", maj);
+
+        // Glisser à la souris (au doigt, le défilement natif suffit).
+        var tire = null, aBouge = false;
+        piste.addEventListener("pointerdown", function (e) {
+          if (e.pointerType !== "mouse" || e.button !== 0) return;
+          tire = { x: e.clientX, gauche: piste.scrollLeft }; aBouge = false;
+        });
+        window.addEventListener("pointermove", function (e) {
+          if (!tire) return;
+          var dx = e.clientX - tire.x;
+          if (!aBouge && Math.abs(dx) > 6) { aBouge = true; piste.classList.add("tire"); }
+          if (aBouge) piste.scrollLeft = tire.gauche - dx;
+        });
+        window.addEventListener("pointerup", function () {
+          if (!tire) return;
+          tire = null;
+          if (aBouge) {
+            piste.classList.remove("tire");
+            var l = pas(), cible = Math.round(piste.scrollLeft / l) * l;
+            piste.scrollTo({ left: cible, behavior: calme ? "auto" : "smooth" });
+          }
+        });
+        piste.addEventListener("click", function (e) { if (aBouge) { e.stopPropagation(); e.preventDefault(); aBouge = false; } }, true);
+        maj();
+      });
+
+      // Au survol, l'aperçu charge la capture complète et la fait défiler du haut vers le bas.
+      [].slice.call(document.querySelectorAll(".carte .vue")).forEach(function (v) {
+        var img = v.querySelector("img"), pret = false;
+        v.addEventListener("pointerenter", function (e) {
+          if (e.pointerType !== "mouse" || calme) return;
+          function defiler() {
+            var d = img.offsetHeight - v.clientHeight;
+            if (d <= 0 || !v.matches(":hover")) return;
+            img.style.transition = "transform " + Math.min(9, Math.max(2.5, d / 260)).toFixed(1) + "s cubic-bezier(.45,0,.3,1)";
+            img.style.transform = "translateY(" + (-d) + "px)";
+          }
+          if (pret) return defiler();
+          var plein = new Image();
+          plein.onload = function () { img.src = plein.src; pret = true; requestAnimationFrame(defiler); };
+          plein.src = v.dataset.complet;
+        });
+        v.addEventListener("pointerleave", function () {
+          img.style.transition = "transform .6s cubic-bezier(.3,0,.2,1)"; img.style.transform = "translateY(0)";
+        });
+      });
+
+      // Visionneuse : la capture entière, que l'on fait défiler.
+      var dlg = document.querySelector(".visionneuse");
+      if (!dlg || typeof dlg.showModal !== "function") {
+        [].slice.call(document.querySelectorAll(".carte .vue")).forEach(function (v) { v.addEventListener("click", function () { window.open(v.dataset.complet, "_blank"); }); });
+        return;
+      }
+      var dImg = dlg.querySelector("img"), dTitre = dlg.querySelector("#visionneuse-titre"), dCorps = dlg.querySelector(".visionneuse-corps");
+      [].slice.call(document.querySelectorAll(".carte .vue")).forEach(function (v) {
+        v.addEventListener("click", function () {
+          dImg.src = v.dataset.complet; dImg.alt = v.querySelector("img").alt;
+          dTitre.textContent = v.dataset.titre;
+          dlg.classList.toggle("etroite", !!v.closest(".email"));
+          dlg.showModal(); dCorps.scrollTop = 0; document.documentElement.classList.add("visionneuse-ouverte");
+        });
+      });
+      dlg.querySelector(".fermer").addEventListener("click", function () { dlg.close(); });
+      dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener("close", function () { document.documentElement.classList.remove("visionneuse-ouverte"); });
+    })();
+
     // L'ouverture : un liquide bleu électrique calculé en WebGL (shader), qui se déforme autour du curseur.
     (function () {
       var toile = document.querySelector(".champ");

@@ -11,6 +11,7 @@ site/index.html            page principale
 site/mentions-legales.html mentions légales
 site/style.css             styles (même identité que l'audit : ardoise, accent jaune, Schibsted Grotesk)
 site/img/                  portrait, captures des projets, image de partage (apercu.png)
+site/img/agence/           réalisations en agence : vignette (carrousel) et capture complète (survol, visionneuse)
 site/fonts/                Schibsted Grotesk (woff2, graisses 400 à 900)
 nginx.conf                 adresses sans .html, cache des images, redirection de www
 Dockerfile                 image nginx
@@ -37,7 +38,7 @@ Modifier les fichiers de `site/`, vérifier en local, pousser : Coolify redéplo
 
 ## Animation de l'ouverture
 
-Le fond bleu derrière le nom est un shader WebGL écrit à la main (bruit fractal déformé par lui-même, « domain warping »), dans le dernier script de `site/index.html`. Il ralentit l'image hors écran, se fige si le visiteur a demandé moins d'animations, et laisse un dégradé fixe si WebGL est indisponible.
+Le fond bleu derrière le nom est un shader WebGL écrit à la main (bruit fractal déformé par lui-même, « domain warping »), dans le dernier script de `site/index.html`. Il se met en pause hors écran, se fige si le visiteur a demandé moins d'animations, et laisse un dégradé fixe si WebGL est indisponible.
 
 ## Formulaire de contact
 

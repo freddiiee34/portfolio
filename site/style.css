@@ -119,16 +119,70 @@ summary::after { color: var(--accent); }
 .outils { color: var(--gris); font-size: 15px; margin: 0 0 14px; }
 .liens { display: flex; flex-wrap: wrap; gap: 8px 28px; font-weight: 600; margin: 0; }
 
-/* --- Agence : grille asymétrique d'images ---------------------------------------------- */
-.grille { display: grid; grid-template-columns: repeat(12, 1fr); gap: 40px 24px; }
-.grille figure { margin: 0; }
-.grille .g7 { grid-column: span 7; }
-.grille .g5 { grid-column: span 5; align-self: end; }
-.grille .g12 { grid-column: 3 / span 8; }
-.grille figcaption { margin-top: 14px; }
-.grille figcaption strong { display: block; font-weight: 650; font-size: 17px; }
-.grille figcaption span { display: block; color: var(--gris); font-size: 15px; }
-.grille figcaption p { color: var(--gris-clair); font-size: 15px; margin: 6px 0 0; max-width: 520px; }
+/* --- Réalisations en agence : onglets + carrousels qui débordent jusqu'au bord de l'écran ------- */
+.onglets { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); margin-bottom: 32px; }
+.onglets [role="tab"] {
+  font: 600 15px var(--police); color: var(--gris-clair); background: none; border: 0; cursor: pointer;
+  padding: 10px 18px; border-radius: 999px; transition: background .2s, color .2s;
+}
+.onglets [role="tab"] span { font-weight: 500; color: var(--gris); margin-left: 4px; font-variant-numeric: tabular-nums; }
+.onglets [role="tab"]:hover { color: var(--texte); }
+.onglets [role="tab"][aria-selected="true"] { background: var(--accent); color: var(--sur-accent); }
+.onglets [role="tab"][aria-selected="true"] span { color: color-mix(in srgb, var(--sur-accent) 65%, var(--accent)); }
+
+.piste {
+  --bord: max(var(--marge), calc((100vw - var(--large)) / 2 + var(--marge)));
+  display: flex; gap: 24px; list-style: none; padding: 0 var(--bord) 6px; margin: 0 calc(50% - 50vw);
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--bord);
+  scrollbar-width: none; overscroll-behavior-x: contain; cursor: grab; user-select: none; -webkit-user-select: none;
+}
+.piste::-webkit-scrollbar { display: none; }
+.piste.tire { cursor: grabbing; scroll-snap-type: none; }
+.carte { flex: 0 0 auto; scroll-snap-align: start; }
+.email .carte { width: clamp(240px, 70vw, 300px); }
+.lp .carte { width: clamp(280px, 84vw, 560px); }
+.carte .vue {
+  position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in; overflow: hidden;
+  border-radius: 10px; background: var(--surface); box-shadow: 0 0 0 1px var(--trait);
+}
+.email .vue { aspect-ratio: 3 / 4; }
+.lp .vue { aspect-ratio: 16 / 10; }
+.carte .vue img { width: 100%; height: auto; will-change: transform; pointer-events: none; }
+.carte .voir {
+  position: absolute; left: 12px; bottom: 12px; font: 600 13px var(--police); color: var(--sur-accent);
+  background: var(--accent); padding: 7px 12px; border-radius: 999px; opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .25s;
+}
+.carte .vue:hover .voir, .carte .vue:focus-visible .voir { opacity: 1; transform: none; }
+.carte .vue:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.carte h3 { font-size: 17px; font-weight: 650; margin: 16px 0 0; letter-spacing: 0; }
+.carte .client { color: var(--accent); font-size: 14px; margin: 2px 0 6px; }
+.carte p:not(.client) { color: var(--gris-clair); font-size: 15px; line-height: 1.5; margin: 0; }
+
+.commandes { display: flex; align-items: center; gap: 10px; margin-top: 28px; }
+.commandes button {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--trait); background: none; color: var(--texte);
+  display: grid; place-items: center; cursor: pointer; transition: background .2s, border-color .2s, opacity .2s;
+}
+.commandes button:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--sur-accent); }
+.commandes button:disabled { opacity: .35; cursor: default; }
+.commandes svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.progression { flex: 1; height: 2px; margin-left: 14px; background: var(--trait); border-radius: 99px; overflow: hidden; }
+.progression i { display: block; height: 100%; width: 30%; background: var(--accent); border-radius: 99px; }
+
+/* Visionneuse : la capture entière dans une fenêtre que l'on fait défiler */
+.visionneuse {
+  width: min(1040px, calc(100vw - 32px)); height: calc(100dvh - 48px); max-height: none; padding: 0; border: 0;
+  border-radius: 12px; background: var(--surface); color: var(--texte); overflow: hidden;
+}
+.visionneuse.etroite { width: min(700px, calc(100vw - 32px)); }
+.visionneuse[open] { display: flex; flex-direction: column; }
+.visionneuse::backdrop { background: rgba(5, 6, 10, .82); backdrop-filter: blur(4px); }
+.visionneuse-barre { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 12px 12px 20px; border-bottom: 1px solid var(--trait); }
+.visionneuse-barre p { margin: 0; font-weight: 600; font-size: 15px; }
+.visionneuse .fermer { font: 600 14px var(--police); color: var(--sur-accent); background: var(--accent); border: 0; border-radius: 999px; padding: 9px 16px; cursor: pointer; }
+.visionneuse-corps { overflow-y: auto; flex: 1; overscroll-behavior: contain; }
+.visionneuse-corps img { width: 100%; height: auto; }
+html.visionneuse-ouverte { overflow: hidden; }
 
 /* --- Méthode, compétences, parcours : titre à gauche, contenu à droite ------------------------- */
 .deux { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
@@ -196,8 +250,6 @@ footer a { color: var(--gris-clair); }
 @media (max-width: 860px) {
   .ouverture { grid-template-columns: 1fr; align-content: end; gap: 28px; min-height: calc(92svh - 64px); }
   .projet-corps, .deux, .entete-section, .contact-corps { grid-template-columns: 1fr; gap: 20px; }
-  .grille { grid-template-columns: 1fr; gap: 40px; }
-  .grille .g7, .grille .g5, .grille .g12 { grid-column: auto; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
